@@ -3,6 +3,9 @@
    "version": "0.0.1",
    "description": "",
    "devDependencies": {
+      "@graphql-codegen/cli": "2.0.1",
+      "@graphql-codegen/typescript": "2.0.0",
+      "@graphql-codegen/typescript-resolvers": "^2.0.0",
       "@types/node": "^16.4.7",
       "nodemon": "^2.0.12",
       "ts-node": "10.1.0",
@@ -11,6 +14,8 @@
       "typescript": "4.3.5"
    },
    "dependencies": {
+      "D": "^1.0.0",
+      "graphql-import": "^1.0.2",
       "graphql-yoga": "^1.18.3",
       "pg": "^8.7.1",
       "reflect-metadata": "^0.1.13",
@@ -18,6 +23,7 @@
       "uuidv4": "^6.2.11"
    },
    "scripts": {
-      "start": "nodemon --exec ts-node src/index.ts"
+      "start": "nodemon --exec ts-node src/index.ts",
+      "gen": "graphql-codegen --config codegen.yml"
    }
 }
