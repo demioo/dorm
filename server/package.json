@@ -14,7 +14,8 @@
       "graphql-yoga": "^1.18.3",
       "pg": "^8.7.1",
       "reflect-metadata": "^0.1.13",
-      "typeorm": "0.2.35"
+      "typeorm": "0.2.35",
+      "uuidv4": "^6.2.11"
    },
    "scripts": {
       "start": "nodemon --exec ts-node src/index.ts"
