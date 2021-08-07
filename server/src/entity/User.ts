@@ -5,9 +5,9 @@ import {
   Entity,
   PrimaryColumn,
 } from 'typeorm';
-import { uuid } from 'uuidv4';
+import { v4 as uuid } from 'uuid';
 
-@Entity()
+@Entity('users')
 export class User extends BaseEntity {
   @PrimaryColumn('uuid')
   id!: string;
@@ -19,7 +19,7 @@ export class User extends BaseEntity {
   password!: string;
 
   @BeforeInsert()
-  addId() {
+  addId(): void {
     this.id = uuid();
   }
 }
