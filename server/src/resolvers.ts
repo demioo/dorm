@@ -5,7 +5,7 @@ import { User } from './entity/User';
 
 export const resolvers: ResolverMap = {
   Query: {
-    hello: (_: any, { name }: QueryHelloArgs) => `Hello ${name || 'there'}`,
+    hello: (_: unknown, { name }: QueryHelloArgs) => `Hello ${name || 'there'}`,
   },
   Mutation: {
     register: async (_, { email, password }: MutationRegisterArgs) => {

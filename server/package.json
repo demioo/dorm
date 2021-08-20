@@ -1,52 +1,52 @@
 {
-   "name": "server",
-   "version": "0.0.1",
-   "description": "",
-   "devDependencies": {
-      "@graphql-codegen/cli": "2.0.1",
-      "@graphql-codegen/typescript": "2.0.0",
-      "@graphql-codegen/typescript-resolvers": "^2.0.0",
-      "@types/bcryptjs": "^2.4.2",
-      "@types/jest": "^27.0.0",
-      "@types/node": "^16.4.7",
-      "@types/uuid": "^8.3.1",
-      "@typescript-eslint/eslint-plugin": "^4.29.0",
-      "@typescript-eslint/parser": "^4.29.0",
-      "eslint": "^7.32.0",
-      "jest": "^27.0.6",
-      "nodemon": "^2.0.12",
-      "ts-jest": "^27.0.4",
-      "ts-node": "10.1.0",
-      "tslint-config-prettier": "^1.18.0",
-      "typescript": "4.3.5"
-   },
-   "dependencies": {
-      "bcryptjs": "^2.4.3",
-      "graphql-import": "^1.0.2",
-      "graphql-request": "^3.5.0",
-      "graphql-yoga": "^1.18.3",
-      "pg": "^8.7.1",
-      "reflect-metadata": "^0.1.13",
-      "typeorm": "0.2.35",
-      "uuid": "^8.3.2"
-   },
-   "scripts": {
-      "start": "nodemon --exec ts-node src/index.ts",
-      "gen": "graphql-codegen --config codegen.yml",
-      "test": "jest"
-   },
-   "jest": {
-      "transform": {
-         "^.+\\.tsx?$": "ts-jest"
-      },
-      "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-      "moduleFileExtensions": [
-         "ts",
-         "tsx",
-         "js",
-         "jsx",
-         "json",
-         "node"
-      ]
-   }
+  "name": "server",
+  "version": "0.0.1",
+  "description": "",
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.0.1",
+    "@graphql-codegen/typescript": "2.0.0",
+    "@graphql-codegen/typescript-resolvers": "^2.0.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jest": "^27.0.0",
+    "@types/node": "^16.4.7",
+    "@types/uuid": "^8.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "eslint": "^7.32.0",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "ts-jest": "^27.0.4",
+    "ts-node": "10.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "4.3.5"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "graphql-import": "^1.0.2",
+    "graphql-request": "^3.5.0",
+    "graphql-yoga": "^1.18.3",
+    "pg": "^8.7.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "0.2.35",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
+    "gen": "graphql-codegen --config codegen.yml",
+    "test": "NODE_ENV=test jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
 }
