@@ -18,7 +18,6 @@ export type Mutation = {
   register?: Maybe<Scalars['Boolean']>;
 };
 
-
 export type MutationRegisterArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
@@ -29,15 +28,11 @@ export type Query = {
   hello: Scalars['String'];
 };
 
-
 export type QueryHelloArgs = {
   name?: Maybe<Scalars['String']>;
 };
 
-
-
 export type ResolverTypeWrapper<T> = Promise<T> | T;
-
 
 export type ResolverWithResolve<TResult, TParent, TContext, TArgs> = {
   resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
