@@ -5,8 +5,7 @@ import { join } from 'path';
 import { createTypeormConnection } from './utils/createTypeormConnection';
 import { Server } from 'http';
 import * as fs from 'fs';
-import { makeExecutableSchema } from 'graphql-tools';
-import { mergeSchemas } from '@graphql-tools/schema';
+import { mergeSchemas, makeExecutableSchema } from '@graphql-tools/schema';
 import { GraphQLSchema } from 'graphql';
 
 export const startServer = async (): Promise<Server> => {
