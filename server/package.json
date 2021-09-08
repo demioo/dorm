@@ -11,6 +11,7 @@
     "@types/ioredis": "^4.27.1",
     "@types/jest": "^27.0.0",
     "@types/node": "^16.7.13",
+    "@types/superagent": "^4.1.12",
     "@types/uuid": "^8.3.1",
     "@types/yup": "^0.29.13",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
@@ -21,7 +22,7 @@
     "jest": "^27.0.6",
     "nodemon": "^2.0.12",
     "prettier": "^2.3.2",
-    "ts-jest": "^27.0.4",
+    "ts-jest": "^27.0.5",
     "ts-node": "10.1.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "4.3.5"
@@ -36,6 +37,7 @@
     "ioredis": "^4.27.9",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
+    "superagent": "^6.1.0",
     "typeorm": "0.2.35",
     "uuid": "^8.3.2",
     "yup": "^0.32.9"
@@ -51,6 +53,7 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
+    "preset": "ts-jest",
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
       "ts",
