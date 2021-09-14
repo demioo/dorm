@@ -36,12 +36,4 @@ describe('createEmailConfirmationLink', () => {
     const value = await redis.get(key);
     expect(value).toBeNull();
   });
-
-  test('sends "invalid link" back if bad id is sent', async () => {
-    const response = await superagent(
-      `${process.env.TEST_HOST}/confirm/12342143`
-    );
-    const text = response.text;
-    expect(text).toEqual('invalid link');
-  });
 });

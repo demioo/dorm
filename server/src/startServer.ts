@@ -1,14 +1,14 @@
-import 'reflect-metadata';
+import { makeExecutableSchema, mergeSchemas } from '@graphql-tools/schema';
+import * as fs from 'fs';
+import { GraphQLSchema } from 'graphql';
 import { importSchema } from 'graphql-import';
 import { GraphQLServer } from 'graphql-yoga';
-import { join } from 'path';
-import { createTypeormConnection } from './utils/createTypeormConnection';
 import { Server } from 'http';
-import * as fs from 'fs';
-import { mergeSchemas, makeExecutableSchema } from '@graphql-tools/schema';
-import { GraphQLSchema } from 'graphql';
-import Redis from 'ioredis';
-import { User } from './entity/User';
+import { join } from 'path';
+import 'reflect-metadata';
+import { redis } from './redis';
+import { confirmEmail } from './routes/confirmEmail';
+import { createTypeormConnection } from './utils/createTypeormConnection';
 
 export const startServer = async (): Promise<Server> => {
   const schemas: GraphQLSchema[] = [];
@@ -22,8 +22,6 @@ export const startServer = async (): Promise<Server> => {
     schemas.push(makeExecutableSchema({ resolvers, typeDefs }));
   });
 
-  const redis = new Redis();
-
   const schema: GraphQLSchema = mergeSchemas({ schemas });
 
   const server = new GraphQLServer({
@@ -34,17 +32,7 @@ export const startServer = async (): Promise<Server> => {
     }),
   });
 
-  server.express.get('/confirm/:id', async (req, res) => {
-    const { id } = req.params;
-    const userId = await redis.get(id);
-    if (userId) {
-      await User.update({ id: userId }, { confirmed: true });
-      await redis.del(id);
-      res.send('ok');
-    } else {
-      res.send('invalid link');
-    }
-  });
+  server.express.get('/confirm/:id', confirmEmail);
 
   await createTypeormConnection();
   const app = await server.start({
