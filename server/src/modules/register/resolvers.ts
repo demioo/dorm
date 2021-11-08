@@ -1,13 +1,12 @@
 import * as bcrypt from 'bcryptjs';
-import { v4 } from 'uuid';
 import * as yup from 'yup';
 import { ValidationError } from 'yup';
 import { User } from '../../entity/User';
 import { MutationRegisterArgs } from '../../generated/graphql';
 import { ResolverMap } from '../../types/graphql-utils';
-import { createEmailConfirmationLink } from '../../utils/createEmailConfirmationLink';
 import { formatYupError } from '../../utils/formatYupError';
-import { sendEmail } from '../../utils/sendEmail';
+// import { createEmailConfirmationLink } from '../../utils/createEmailConfirmationLink';
+// import { sendEmail } from '../../utils/sendEmail';
 import {
   DUPLICATE_EMAIL,
   EMAIL_NOT_LONG_ENOUGH,
@@ -26,7 +25,8 @@ const schema = yup.object().shape({
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    register: async (_, args: MutationRegisterArgs, { redis, url }) => {
+    // register: async (_, args: MutationRegisterArgs, { redis, url }) => {
+    register: async (_, args: MutationRegisterArgs) => {
       try {
         await schema.validate(args, { abortEarly: false });
       } catch (error) {
@@ -50,21 +50,18 @@ export const resolvers: ResolverMap = {
 
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = User.create({
-        id: v4(),
         email,
         password: hashedPassword,
       });
 
       await user.save();
 
-      // await createEmailConfirmationLink(url, user.id, redis);
-
-      if (process.env.NODE_ENV !== 'test') {
-        await sendEmail(
-          email,
-          await createEmailConfirmationLink(url, user.id, redis)
-        );
-      }
+      // if (process.env.NODE_ENV !== 'test') {
+      //   await sendEmail(
+      //     email,
+      //     await createEmailConfirmationLink(url, user.id, redis)
+      //   );
+      // }
 
       return null;
     },
